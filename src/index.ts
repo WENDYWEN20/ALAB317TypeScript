@@ -3,27 +3,28 @@
 //adding type annotations where relevant, as follows:
 
 
-class Vehicle <T> {
-  type Status = "stopped"|"started";
-  make: T;
-  model: T;
-  wheels: T;
-    constructor(make:T, model:T, wheels:T) {
+class Vehicle  {
+  public status : 'stopped'|'started' ='stopped';
+  public make;
+  public model;
+  public wheels;
+  public errorCode: '404'|'200' ='200';
+    constructor(make: string, model: string, wheels: number) {
       this.make=make;
       this.model = model;
       this.wheels = wheels;
     }
     start() {
-      this.Status = "started";
+      this.status = "started";
     }
     stop() {
-      this.Status = "stopped";
+      this.status = "stopped";
     }
   }
   
   class Car extends Vehicle {
     constructor(make:string, model:string) {
-      super(make, model, "four");
+      super(make, model, 4);
     }
   }
   
@@ -33,8 +34,8 @@ class Vehicle <T> {
     }
   }
   
-  function printStatus(vehicle.Status) {
-    if (vehicle.status === "running") {
+  function printStatus(vehicle: Vehicle) {
+    if (vehicle.status === "started") {
       console.log("The vehicle is running.");
     } else {
       console.log("The vehicle is stopped.");
@@ -44,16 +45,16 @@ class Vehicle <T> {
 
   class NCycle extends Vehicle {
     constructor(make:string, model:string) {
-      super(make, model, "four");
+      super(make, model, 4);
     }
   }
   const myHarley = new MotorCycle("Harley-Davidson", "Low Rider S");
   myHarley.start();
   printStatus(myHarley);
-  console.log(myHarley.make.toUppercase());
+  console.log(myHarley.make.toUpperCase());
   
   const myBuick = new Car("Buick", "Regal");
   myBuick.wheels = myBuick.wheels - 1;
   console.log(myBuick.wheels);
-  console.log(myBuick.mdl);
+  console.log(myBuick.model);
   
